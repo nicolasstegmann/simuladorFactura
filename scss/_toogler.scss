@@ -1,0 +1,69 @@
+.tooglerContainer {
+    perspective: 800px;
+    padding: 10px;
+}
+
+.toggle {
+    position: relative;
+    border: solid 4px naturgyStyleGuide.$c-naturgyThird;
+    border-radius: 55px;
+    transition: transform cubic-bezier(0, 0, 0.30, 2) .4s;
+    transform-style: preserve-3d;
+    perspective: 800px;
+}
+
+.toggle>input[type="radio"] {
+    display: none;
+}
+
+.toggle>#choice1:checked~#flap {
+    transform: rotateY(-180deg);
+}
+
+.toggle>#choice1:checked~#flap>.content {
+    transform: rotateY(-180deg);
+}
+
+.toggle>#choice2:checked~#flap {
+    transform: rotateY(0deg);
+}
+
+.toggle>label {
+    display: inline-block;
+    min-width: 100px;
+    padding: 10px;
+    font-size: 15px;
+    text-align: center;
+    color: naturgyStyleGuide.$c-naturgyThird;
+    cursor: pointer;
+}
+
+.toggle>label,
+.toggle>#flap {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.toggle>#flap {
+    position: absolute;
+    top: calc( 0px - 4px);
+    left: 50%;
+    height: calc(100% + 4px * 2);
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    background-color: naturgyStyleGuide.$c-naturgyThird;
+    border-top-right-radius: 55px;
+    border-bottom-right-radius: 55px;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform cubic-bezier(0.4, 0, 0.2, 1) .5s;
+}
+
+.toggle>#flap>.content {
+    color: #333;
+    transition: transform 0s linear .25s;
+    transform-style: preserve-3d;
+}
