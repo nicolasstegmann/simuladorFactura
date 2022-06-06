@@ -215,13 +215,14 @@ class ArtifactAvailableKcal {
 }
 
 class ArtifactTemplate {
-    constructor(artifactName, askDays, askHours, askPilot, askPeople, artifactAvailableKcalValue, artifactAvailableKcalDesc) {
+    constructor(artifactName, askDays, askHours, askPilot, askPeople, artifactAvailableKcalValue, artifactAvailableKcalDesc, artifactImg) {
         this.artifactName = artifactName,
             this.artifactAvailableKcals = [],
             this.askDays = askDays,
             this.askHours = askHours,
             this.askPilot = askPilot,
-            this.askPeople = askPeople
+            this.askPeople = askPeople,
+            this.artifactImg = artifactImg
         if (!isNaN(artifactAvailableKcalValue)) {
             this.addAvailableKcal(artifactAvailableKcalValue, artifactAvailableKcalDesc)
         }
@@ -310,11 +311,11 @@ const artifactDesigner = () => {
 
     m3Consumption = 0
 
-    artifactTemplate = new ArtifactTemplate('horno', true, true, false, false, 0.32)
+    artifactTemplate = new ArtifactTemplate('horno', true, true, false, false, 0.32, './img/horno.svg')
     artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('hornalla', true, true, false, false, 0.15)
+    artifactTemplate = new ArtifactTemplate('hornalla', true, true, false, false, 0.15, './img/cocina.svg')
     artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('estufa', true, true, true, false)
+    artifactTemplate = new ArtifactTemplate('estufa', true, true, true, false, './img/calefactor.svg')
     artifactTemplate.addAvailableKcal(0.27, '2500 kcal/h')
     artifactTemplate.addAvailableKcal(0.32, '3000 kcal/h')
     artifactTemplate.addAvailableKcal(0.48, '4500 kcal/h')
@@ -322,14 +323,14 @@ const artifactDesigner = () => {
     artifactTemplate.addAvailableKcal(0.97, '9000 kcal/h')
     artifactTemplate.addAvailableKcal(1, '10000 kcal/h')
     artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('caldera', false, false, true, true)
+    artifactTemplate = new ArtifactTemplate('caldera', false, false, true, true, './img/caldera.svg')
     artifactTemplate.addAvailableKcal(2.15, '20000 kcal/h')
     artifactTemplate.addAvailableKcal(3.23, '30000 kcal/h')
     artifactTemplate.addAvailableKcal(4.3, '40000 kcal/h')
     artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('calefón', false, false, true, true, 1.13)
+    artifactTemplate = new ArtifactTemplate('calefón', false, false, true, true, 1.13, './img/calefon.svg')
     artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('termotanque', false, false, false, true, 0.35)
+    artifactTemplate = new ArtifactTemplate('termotanque', false, false, false, true, 0.35, './img/termotanque.svg')
     artifactTemplates.push(artifactTemplate)
 
     while (continueFlag) {

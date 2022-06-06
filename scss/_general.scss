@@ -9,74 +9,273 @@ html {
 }
 
 body {
-    font-family: winikStyleGuide.$t-winiksoftMain;
+    font-family: naturgyStyleGuide.$t-naturgyMain;
     overflow-x: hidden;
     @include dimension(100vw);
-    background-color: winikStyleGuide.$c-totalWhite;
+    background-color: naturgyStyleGuide.$c-naturgyThird;
 }
 
 a {
     text-decoration: none;
 }
 
-h2,
-h3 {
-    margin: 0;
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: naturgyStyleGuide.$c-naturgyMain;
+    color: naturgyStyleGuide.$c-naturgyThird;
+
+    h1 {
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    display: flex;
+    justify-content: space-between;
 }
 
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
+.coolContainer {
+    margin: 0px 20px 0px 0px;
+    display: flex;
+    justify-content: space-between;
 }
 
-main {
+.artifactSelector {
+    padding: 10px 0px 10px 0px;
+    background-color: naturgyStyleGuide.$c-naturgySecond;
+    color: naturgyStyleGuide.$c-naturgyThird;
+    text-align: left;
+    min-height: 200px;
+
+    h2 {
+        padding: 0px 0px 10px 10px;
+    }
+}
+
+.artifactSelectorList {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.artifactCard {
+    font-size: 15px;
+    color: naturgyStyleGuide.$c-naturgyThird;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 20px;
+
+    img {
+        margin: 5px;
+    }
+}
+
+.artifactCardImg {
+    height: 85px;
+}
+
+.artifactCard:hover {
+    $growMap: (name: grow, duration: 0.5s, iteration:1, fillMode: forwards);
+    @include animation($growMap...);
+    cursor: pointer;
+
+}
+
+footer {
+    text-align: center;
+    background-color: naturgyStyleGuide.$c-naturgyMain;
+    color: naturgyStyleGuide.$c-naturgyThird;
+    font-weight: bold;
+
+    a {
+        color: naturgyStyleGuide.$c-naturgyThird;
+    }
+}
+
+.naturgyButton {
+    background-color: naturgyStyleGuide.$c-naturgyMain;
+    border: transparent;
+    padding: 5px 30px 5px 30px;
+    border-radius: 15px;
+    color: naturgyStyleGuide.$c-naturgyThird;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.naturgyButton:hover,
+.naturgyButton:focus {
+    $pulseMap: (name: pulse, duration: 1s, iteration:1, fillMode: forwards);
+    @include animation($pulseMap...);
+    box-shadow: 0 0 0 2em transparent;
+    cursor: pointer;
+}
+
+.m3ConsumptionInput {
+    text-align: center;
+}
+
+.formLabel {
+    font-size: 15px;
+    margin-top: 5px;
     display: block;
-    margin: 0 auto;
-    max-width: 40rem;
-    padding: 1rem;
+    transition: all 0.3s;
+    transform: translateY(0rem);
 }
 
-ul.gradient-list {
-    counter-reset: gradient-counter;
-    list-style: none;
-    margin: 1.75rem 0;
-    padding-left: 1rem;
+.formInput {
+    color: naturgyStyleGuide.$c-naturgy1;
+    font-size: 15px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: naturgyStyleGuide.$c-naturgyThird;
+    border: none;
+    width: 500px;
+    display: block;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s;
+}
 
-    >li {
-        background: white;
-        border-radius: 0 0.5rem 0.5rem 0.5rem;
-        @extend %boxshadow;
-        counter-increment: gradient-counter;
-        margin-top: 1rem;
-        min-height: 3rem;
-        padding: 1rem 1rem 1rem 3rem;
-        position: relative;
+.formInput:placeholder-shown+.formLabel {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-2rem);
+}
 
-        &::before,
-        &::after {
-            background: linear-gradient(135deg, winikStyleGuide.$c-winiksoftPower 0%, winikStyleGuide.$c-winiksoftLight 100%);
-            border-radius: 1rem 1rem 0 1rem;
-            content: '';
-            height: 3rem;
-            left: -1rem;
-            overflow: hidden;
-            position: absolute;
-            top: -1rem;
-            width: 3rem;
+.artifactConfigurator {
+    margin: 20px;
+    padding: 20px;
+    background-color: naturgyStyleGuide.$c-naturgyThird;
+    border: 3px naturgyStyleGuide.$c-naturgy2 solid;
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+}
+
+.iconBadgeGroup .iconBadgeContainer {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.iconBadgeGroup .iconBadgeContainer:first-child {
+    margin-left: 0
+}
+
+.iconBadgeContainer {
+    margin-top: 20px;
+    position: relative;
+}
+
+.iconBadgeIcon {
+    font-size: 30px;
+    position: relative;
+}
+
+.iconBadge {
+    background-color: naturgyStyleGuide.$c-naturgy3;
+    font-size: 15px;
+    color: naturgyStyleGuide.$c-naturgyThird;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 35%;
+    position: absolute;
+    top: -5px;
+    left: 18px;
+}
+
+.mainSide {
+    transition: 1s;
+}
+
+footer {
+    position:absolute;
+    bottom:0;
+    width: 100%;
+    height:30px;     
+}
+
+.artifactListSide {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: naturgyStyleGuide.$c-naturgyMain;
+    overflow-x: hidden;
+    transition: 1s;
+    padding-top: 60px;
+
+    a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: naturgyStyleGuide.$c-naturgyThird;
+        display: block;
+        transition: 1s;
+
+        &:hover {
+            color: naturgyStyleGuide.$c-naturgy2;
+            cursor: pointer;
         }
 
-        &::before {
-            align-items: flex-end;
-            @extend %boxshadow;
-            content: counter(gradient-counter);
-            color: winikStyleGuide.$c-winiksoftLetterDark;
-            ;
-            display: flex;
-            font: 900 1.5em/1 'Montserrat';
-            justify-content: flex-end;
-            padding: 0.125em 0.25em;
-            z-index: 1;
+    }
+
+    .closebtn {
+        color: naturgyStyleGuide.$c-naturgyThird;
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+    h2 {
+        background-color: naturgyStyleGuide.$c-naturgyMain;
+        color: naturgyStyleGuide.$c-naturgyThird;
+        text-align: center;
+        margin: 20px;
+        border: 2px naturgyStyleGuide.$c-naturgyThird solid;
+        border-radius: 10px;
+    }
+}
+
+.asideArtifactList {
+    margin-top: 50px;
+}
+
+.asideArtifactListItem {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    font-size: 15px;
+    color: naturgyStyleGuide.$c-naturgyThird;
+    width: 100%;
+    padding: 10px 10px 0px 10px;
+}
+
+.artifactConfigurator {
+    h3 {
+        font-family: naturgyStyleGuide.$t-naturgySecond;
+        font-weight: bold;
+        border-bottom: 2px naturgyStyleGuide.$c-naturgy1 solid;
+        padding: 0px 0px 10px 0px;
+    }
+
+    .combobox {
+        padding: 10px 0px 10px 0px;
+    }
+}
+
+.asideArtifactListItem {
+    line-height: 10px;
+    .asideArtifactListItemContent {
+        padding-top: 15px;
+        a {
+            padding-top: 0px;
         }
     }
 }

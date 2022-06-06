@@ -1,23 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coderhouse - Javascript</title>
-    <link rel="stylesheet" href="./css/normalize.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Gasnor - Simulador de facturas</title>
+    <link rel="shortcut icon" href="./img/gasnor.ico">
+    <script src="https://kit.fontawesome.com/1954f46bc1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    <h1>Coderhouse - Curso Javascript</h1>
-    <h2>Nicolás Stegmann</h2>
-    <h3><a href="https://github.com/nicolasstegmann">My Github profile</a></h3>
-    <br>
-    <ul class="gradient-list">
-        <li><a href="./pages/desafio1.html">Desafío complementario: Crear un algoritmo utilizando un ciclo</a></li>
-        <li><a href="./pages/desafio2simulador.html">Desafío 1: Simulador Interactivo</a></li>
-        <li><a href="./pages/desafioArrays.html">Desafío complementario: Incorporar arrays</a></li>
-        <li><a href="./pages/simuladorFactura.html">Proyecto final: Simulador de facturas de gas</a></li>
-    </ul>
+    <section id="asideBlockLeft" class="mainSide">
+        <header>
+            <nav class="navbar">
+                <a href="https://www.gasnor.com/">
+                    <img src="./img/gasnorLogo.png" alt="Gasnor S.A." style="width:150px;">
+                </a>
+                <h1>Simulador de facturas</h1>
+                <div id="coolContainer" class="coolContainer">
+                    <div class="tooglerContainer">
+                        <form class="toggle">
+                            <input type="radio" class="toogleChoice" id="choice1" name="choice" value="artefacto"
+                                checked>
+                            <label for="choice1">Modo Artefacto</label>
+                            <input type="radio" class="toogleChoice" id="choice2" name="choice" value="consumo">
+                            <label for="choice2">Modo Consumo</label>
+                            <div id="flap"><span class="content">dumb</span></div>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section id="artifact">
+                <section id="artifactSelector" class="artifactSelector">
+                    <h2 id="artifactSelectorTitle"></h2>
+                </section>
+            </section>
+            <section id="invoice">
+                <section id="invoiceFilter">
+
+                </section>
+                <section id="invoiceDetail">
+
+                </section>
+            </section>
+        </main>
+        <footer>
+            <div>
+                © 2022 Copyright: <a href="https://github.com/nicolasstegmann">Nicolás Stegmann</a>
+            </div>
+        </footer>
+    </section>
+    <section id="asideBlockRight" class="artifactListSide">
+        <a id="closeAsideBlockRight" class="closebtn">x</a>
+        <ul id="asideArtifactList" class="asideArtifactList"></ul>
+    </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="../js/simuladorFacturaDom.js"></script>
+    <script src="../js/toogle.js"></script>
 </body>
+
 </html>
