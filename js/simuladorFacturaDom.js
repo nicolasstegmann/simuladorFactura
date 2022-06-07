@@ -1155,6 +1155,7 @@ const createComboBox = (parent, id, label, array, value, description) => {
 
     const comboLabel = document.createElement('label')
     comboLabel.for = id
+    comboLabel.className = 'comboLabel'
     comboLabel.innerHTML = label
     comboContainer.append(comboLabel)
 
