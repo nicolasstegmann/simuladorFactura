@@ -1,0 +1,33 @@
+[{
+    "subzoneId": 1,
+    "categoryId": 1,
+    "subcategoryId": 1,
+    "rateId": 1,
+    "conceptId": 1,
+    "subTotal": 2878.7400000000002,
+    "taxDetails": [{
+        "taxId": 3,
+        "taxAmount": 604.54
+    }, {
+        "taxId": 4,
+        "taxAmount": 86.36
+    }],
+    "taxTotal": 690.9,
+    "total": 3569.64
+}, {
+    "subzoneId": 1,
+    "categoryId": 1,
+    "subcategoryId": 1,
+    "rateId": 1,
+    "conceptId": 2,
+    "subTotal": 100,
+    "taxDetails": [{
+        "taxId": 3,
+        "taxAmount": 21
+    }, {
+        "taxId": 4,
+        "taxAmount": 3
+    }],
+    "taxTotal": 24,
+    "total": 124
+}]
