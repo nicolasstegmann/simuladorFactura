@@ -22,12 +22,12 @@
                 </a>
                 <h1>Simulador de facturas</h1>
                 <div id="coolContainer" class="coolContainer">
-                    <div class="tooglerContainer">
+                    <div class="togglerContainer">
                         <form class="toggle">
-                            <input type="radio" class="toogleChoice" id="choice1" name="choice" value="artefacto"
+                            <input type="radio" class="toggleChoice" id="choice1" name="choice" value="artefacto"
                                 checked>
                             <label for="choice1">Modo Artefacto</label>
-                            <input type="radio" class="toogleChoice" id="choice2" name="choice" value="consumo">
+                            <input type="radio" class="toggleChoice" id="choice2" name="choice" value="consumo">
                             <label for="choice2">Modo Consumo</label>
                             <div id="flap"><span class="content">dumb</span></div>
                         </form>
@@ -42,18 +42,43 @@
                     <!-- Código inyectado desde JS -->
                 </section>
             </section>
-            <section id="invoice">
-                <section id="invoiceFilter">
-                    <!-- Código inyectado desde JS -->
-                </section>
-                <section id="invoiceDetail">
-                    <!-- Código inyectado desde JS -->
-                </section>
+            <section class="invoiceContainer" id="invoice">
+                <div class="invoiceConfigurator" id="invoiceFilter">
+                    <h3>Seleccioná la configuración de tu factura</h3>
+                    <form class="invoiceForm">
+                        <!-- Código inyectado desde JS -->
+                    </form>
+                    <!-- <button id="calcInvoice" class="naturgyButton">Calcular</button> -->
+                </div>
+                <div class="invoiceDetail" id="invoiceDetail">
+                    <h3>Detalle de tu factura</h3>
+                    <ul id="invoiceDetailList">
+                        <!-- Código inyectado desde JS -->
+                        <li class="invoiceDetailItem">
+                            <div class="invoiceDetailItemDesc">
+                                Cargo fijo
+                            </div>
+                            <div class="invoiceDetailItemAmount">
+                                $450.23
+                            </div>
+                        </li>
+                        <li class="invoiceDetailItem">
+                            <div class="invoiceDetailItemDesc">
+                                IVA
+                            </div>
+                            <div class="invoiceDetailItemAmount">
+                                $90.50
+                            </div>
+                        </li>
+
+                    </ul>
+                    <h2 id="invoiceDetailTotal"></h2>
+                </div>
             </section>
         </main>
         <footer>
             <div>
-                © 2022 Copyright: <a href="https://www.winiksoft.com" target="_blank">Winiksoft</a>
+                © 2022 Copyright: <a href="https://www.winiksoft.com" target="_blank">Winiksoft S.A.</a>
             </div>
         </footer>
     </section>
@@ -66,8 +91,14 @@
     <script>
         AOS.init();
     </script>
-    <script src="../js/simuladorFacturaDom.js"></script>
-    <script src="../js/toogle.js"></script>
+    <script src="../js/toggle.js"></script>
+    <script src="../js/domain.js"></script>
+    <script src="../js/commonUtilities.js"></script>
+    <script src="../js/invoiceClasses.js"></script>
+    <script src="../js/invoice.js"></script>
+    <script src="../js/artifactClasses.js"></script>
+    <script src="../js/artifacts.js"></script>
+    <script src="../js/mainInvoiceSimulator.js"></script>
 </body>
 
 </html>
