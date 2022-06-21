@@ -11,12 +11,7 @@ class InvoiceDetail {
             this.total = round(this.subTotal + this.taxTotal, 2)
     }
     amountCalculator = (rateAmount, m3Consumption) => {
-        let amount
-        if (getObjectArrayValuebyId(accountingConcepts, this.conceptId, 'type') == 'C') {
-            amount = rateAmount * m3Consumption
-        } else {
-            amount = rateAmount
-        }
+        const amount = getObjectArrayValuebyId(accountingConcepts, this.conceptId, 'type') == 'C' ? rateAmount * m3Consumption : rateAmount
         return amount
     }
     taxesCalculator = () => {
