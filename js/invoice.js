@@ -5,6 +5,27 @@ let selectedCategoryId
 let selectedSubCategoryId
 let selectedRateTypeId
 
+const ratesChartInit = () => {
+    const ctx = document.getElementById('myRatesChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        options: {
+            animation: {
+                duration: 5000
+            },
+            indexAxis: 'y',
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    })
+    return myChart
+}
+
+const myChart = ratesChartInit()
+
 const changeComboValue = (e) => {
     if (e.target.id == 'categories') {
         const selectedCategories = categories.filter((category) => category.id == e.target.value)
@@ -137,8 +158,11 @@ const invoicePrinter = (invoiceDetailsFilter) => {
     return invoiceDetailsPrint
 }
 
-const printInvoiceDetailListItem = ({accountingConceptName, accountingConceptAmount}) => {
-    const printInvoiceDetail = 
+const printInvoiceDetailListItem = ({
+    accountingConceptName,
+    accountingConceptAmount
+}) => {
+    const printInvoiceDetail =
         `
         <div class="invoiceDetailItemDesc">
             ${accountingConceptName}
@@ -167,4 +191,36 @@ const invoiceCalculator = () => {
 
     const invoiceDetailTotal = document.querySelector('#invoiceDetailTotal')
     invoiceDetailTotal.innerHTML = `Total a facturar: $${invoiceAmount}`
+    ratesChartComparison(myChart)
+}
+
+const agregateByRateId = () => {
+    let invoiceAgregatesByRateId = invoiceDetails.filter((invoiceDetail) => invoiceDetail.subzoneId == selectedSubzoneId && invoiceDetail.categoryId == selectedCategoryId && invoiceDetail.subcategoryId == selectedSubCategoryId)
+    invoiceAgregatesByRateId = invoiceAgregatesByRateId.reduce((acum, invoiceDetail) => {
+        if (!acum[invoiceDetail.rateId]) {
+            acum[invoiceDetail.rateId] = {
+                rateId: invoiceDetail.rateId,
+                rateName: getObjectArrayValuebyId(rateTypes, invoiceDetail.rateId, 'name'),
+                total: 0
+            };
+            invoiceAgregatesByRateId.push(acum[invoiceDetail.rateId])
+        }
+        acum[invoiceDetail.rateId].total += invoiceDetail.total;
+        return acum;
+    }, []).filter(Object);
+    return invoiceAgregatesByRateId;
+}
+
+const ratesChartComparison = (myChart) => {
+    const invoiceAgregatesByRateId = agregateByRateId()
+    myChart.data = {
+        labels: invoiceAgregatesByRateId.map((rateType) => rateType.rateName),
+        datasets: [{
+            label: 'Total en $ de factura',
+            data: invoiceAgregatesByRateId.map((rateType) => rateType.total),
+            backgroundColor: '#004571',
+            borderWidth: 1
+        }]
+    }
+    myChart.update()
 }
