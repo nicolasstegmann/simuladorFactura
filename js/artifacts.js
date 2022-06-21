@@ -1,6 +1,8 @@
 let artifacts = []
 let artifactTemplates = []
 
+const artifactToastNotification = (icon, message) => naturgyToast.fire({icon: icon, title: message})    
+
 const artifactLocalStorage = () => {
     localStorage.setItem('artifacts', JSON.stringify(artifacts))
 }
@@ -19,7 +21,8 @@ const removeArtifact = (e) => {
     const node = e.target
     const dataId = node.getAttribute('data-id')
     artifacts.splice(dataId, 1)
-    artifactLocalStorage()    
+    artifactLocalStorage()  
+    artifactToastNotification('info', '¡Has eliminado un artefacto de tu lista!')
     updateArtifactCounter()
 }
 
@@ -146,6 +149,7 @@ const addArtifact = (e) => {
 
     artifacts.push(artifact)
     artifactLocalStorage()
+    artifactToastNotification('success', '¡Has agregado un artefacto a tu lista!')    
     updateArtifactCounter()
 }
 

@@ -69,7 +69,7 @@ main {
     padding: 10px;
     width: 100px;
     text-align: center;
-    border: 2px solid white;
+    border: 2px solid naturgyStyleGuide.$c-naturgyThird;
     border-radius: 20px;
     box-shadow: rgba(naturgyStyleGuide.$c-naturgy4, 0.56) 0px 22px 70px 4px;
     img {
@@ -258,7 +258,7 @@ footer {
     padding: 10px 10px 0px 10px;
 }
 
-.artifactConfigurator, .invoiceConfigurator, .invoiceDetail {
+.artifactConfigurator, .invoiceConfigurator, .invoiceDetail, .invoiceChart {
     margin: 20px;
     padding: 20px;
     background-color: naturgyStyleGuide.$c-naturgyThird;
