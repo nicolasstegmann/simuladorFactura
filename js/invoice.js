@@ -110,7 +110,7 @@ const invoicePrinter = (invoiceDetailsFilter) => {
     //taxes
     let invoiceDetailTaxes = []
     invoiceDetailsFilter.forEach((invoiceDetail) => {
-        invoiceDetailTaxes = invoiceDetailTaxes.concat(invoiceDetail.taxDetails)
+        invoiceDetailTaxes.push(...invoiceDetail.taxDetails)
     })
     //agregate functions
     let invoiceAggregateTaxes = []
@@ -126,7 +126,7 @@ const invoicePrinter = (invoiceDetailsFilter) => {
         return acum;
     }, []).filter(Object);
 
-    invoiceDetailsPrint = invoiceDetailsPrint.concat(invoiceAggregateTaxes.map((invoiceDetail) => {
+    invoiceDetailsPrint.push(...invoiceAggregateTaxes.map((invoiceDetail) => {
         return {
             accountingConceptId: invoiceDetail.taxId,
             accountingConceptName: getObjectArrayValuebyId(accountingConcepts, invoiceDetail.taxId, 'name'),
@@ -135,6 +135,19 @@ const invoicePrinter = (invoiceDetailsFilter) => {
     }))
 
     return invoiceDetailsPrint
+}
+
+const printInvoiceDetailListItem = ({accountingConceptName, accountingConceptAmount}) => {
+    const printInvoiceDetail = 
+        `
+        <div class="invoiceDetailItemDesc">
+            ${accountingConceptName}
+        </div>
+        <div class="invoiceDetailItemAmount">
+            $${accountingConceptAmount.toFixed(2)} 
+        </div>
+        `
+    return printInvoiceDetail
 }
 
 const invoiceCalculator = () => {
@@ -148,15 +161,7 @@ const invoiceCalculator = () => {
         const invoiceDetailListItem = document.createElement('li')
         invoiceDetailListItem.className = 'invoiceDetailItem'
 
-        invoiceDetailListItem.innerHTML =
-            `
-            <div class="invoiceDetailItemDesc">
-                ${invoiceDetail.accountingConceptName}
-            </div>
-            <div class="invoiceDetailItemAmount">
-                $${invoiceDetail.accountingConceptAmount.toFixed(2)} 
-            </div>
-            `
+        invoiceDetailListItem.innerHTML = printInvoiceDetailListItem(invoiceDetail)
         invoiceDetailList.append(invoiceDetailListItem)
     })
 

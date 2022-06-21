@@ -1,11 +1,5 @@
 //Set toggle
-const setToggleSelection = (e) => {
-    if (e.target.id == 'choice1') {
-        artifactDesigner()
-    } else {
-        m3ConsumptionInput()
-    }
-}
+const setToggleSelection = (e) => e.target.id == 'choice1' ? artifactDesigner() : m3ConsumptionInput()
 
 const toggleSelections = document.querySelectorAll('.toggleChoice')
 
@@ -20,9 +14,4 @@ closeAside.addEventListener('click', closeSide)
 //START
 invoiceFilters()
 const seleccionInicial = document.querySelector('#choice1')
-if (seleccionInicial.checked) {
-    artifactDesigner()
-} else {
-    m3ConsumptionInput()
-}
-
+seleccionInicial.checked ? artifactDesigner() : m3ConsumptionInput()

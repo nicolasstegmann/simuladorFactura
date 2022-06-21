@@ -23,31 +23,36 @@ const removeArtifact = (e) => {
     updateArtifactCounter()
 }
 
+const printartifactAsideListItem = (i, {artifactName, artifactKcalDesc, artifactConsumption}) => {
+    const printedArtifact =  `
+        <div class="asideArtifactListItemContent">
+            ${capitalizeFirstLetter(artifactName)} 
+        </div>
+        <div class="asideArtifactListItemContent">
+            ${artifactKcalDesc}
+        </div>
+        <div class="asideArtifactListItemContent">
+            ${artifactConsumption.toFixed(2)} m3
+        </div>
+        <div class="asideArtifactListItemContent">
+            <a data-id="${i}" class="itemclosebtn">×</a>
+        </div>
+        `
+    return printedArtifact
+}
+
 const updateArtifactCounter = () => {
     const artifactCounterNode = document.querySelector('#artifactBadge')
+    artifacts = JSON.parse(localStorage.getItem('artifacts')) || []
+    artifactCounterNode.innerHTML = artifacts.length
     const artifactAsideList = document.querySelector('#asideArtifactList')
     artifactAsideList.innerHTML = ''
-    artifacts = JSON.parse(localStorage.getItem('artifacts'))
-    artifactCounterNode.innerHTML = artifacts.length
     artifacts.forEach((artifact, i) => {
         const artifactAsideListItem = document.createElement('li')
         artifactAsideListItem.className = 'asideArtifactListItem'
 
-        artifactAsideListItem.innerHTML =
-            `
-            <div class="asideArtifactListItemContent">
-                ${capitalizeFirstLetter(artifact.artifactName)} 
-            </div>
-            <div class="asideArtifactListItemContent">
-                ${artifact.artifactKcalDesc}
-            </div>
-            <div class="asideArtifactListItemContent">
-                ${artifact.artifactConsumption.toFixed(2)} m3
-            </div>
-            <div class="asideArtifactListItemContent">
-                <a data-id="${i}" class="itemclosebtn">×</a>
-            </div>
-            `
+        artifactAsideListItem.innerHTML = printartifactAsideListItem(i, artifact)
+
         artifactAsideList.append(artifactAsideListItem)
     })
 
@@ -64,9 +69,7 @@ const updateArtifactCounter = () => {
     const targetNode = document.querySelector('#asideBlockRight')
 
     nodeToDelete = targetNode.querySelector('h2')
-    if (!isEmpty(nodeToDelete)) {
-        nodeToDelete.remove()
-    }
+    isEmpty(nodeToDelete) || nodeToDelete.remove()
 
     const nodeToInsert = document.createElement('h2')
     nodeToInsert.innerHTML = `TOTAL: ${m3Consumption().toFixed(2)} m3`
@@ -148,9 +151,7 @@ const addArtifact = (e) => {
 
 const closeArtifact = (e) => {
     const nodeToDelete = document.querySelector('#artifactConfigurator')
-    if (!isEmpty(nodeToDelete)) {
-        nodeToDelete.remove()
-    }
+    isEmpty(nodeToDelete) || nodeToDelete.remove()
 }
 
 const artifactConfiguration = (e) => {
@@ -190,9 +191,7 @@ const artifactDesigner = () => {
     artifactTemplates.push(artifactTemplate)
 
     nodeToDelete = document.querySelector('#m3ConsumptionInput')
-    if (!isEmpty(nodeToDelete)) {
-        nodeToDelete.remove()
-    }
+    isEmpty(nodeToDelete) || nodeToDelete.remove()
 
     nodeToInsert = document.createElement('div')
     nodeToInsert.className = 'iconBadgeGroup'
@@ -254,9 +253,7 @@ const m3ConsumptionInput = () => {
 
     idsToDelete.forEach((idToDelete) => {
         nodeToDelete = document.querySelector(idToDelete)
-        if (!isEmpty(nodeToDelete)) {
-            nodeToDelete.remove()
-        }
+        isEmpty(nodeToDelete) || nodeToDelete.remove()
     })
     closeSide()
 
@@ -273,7 +270,7 @@ const m3ConsumptionInput = () => {
         </form>
         `
 
-        const artifactSelectorNode = document.querySelector('#artifactSelector')
+    const artifactSelectorNode = document.querySelector('#artifactSelector')
     artifactSelectorNode.append(nodeToInsert)
 
     const m3Form = document.querySelector('#m3InputForm')
