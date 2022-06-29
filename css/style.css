@@ -373,6 +373,17 @@ footer a {
   width: 150px;
 }
 
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  display: none;
+}
+
+.loaderOn {
+  display: block;
+}
+
 .togglerContainer {
   perspective: 800px;
   padding: 10px;

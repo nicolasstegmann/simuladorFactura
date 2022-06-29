@@ -316,3 +316,14 @@ footer {
     text-align: end;
     width: 150px;
 }
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    display: none;
+}
+
+.loaderOn {
+    display: block;
+}

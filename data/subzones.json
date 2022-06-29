@@ -1,0 +1,12 @@
+{
+    "subzones": [
+        {
+            "id": 1,
+            "name": "SALTA - JUJUY"
+        },
+        {
+            "id": 2,
+            "name": "SANTIAGO - TUCUMAN"
+        }
+    ]
+}

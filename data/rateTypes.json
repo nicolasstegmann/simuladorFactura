@@ -1,0 +1,20 @@
+{
+    "rateTypes": [
+        {
+            "id": 1,
+            "name": "NORMAL"
+        },
+        {
+            "id": 2,
+            "name": "SOCIAL"
+        },
+        {
+            "id": 3,
+            "name": "ZONA FRIA"
+        },
+        {
+            "id": 4,
+            "name": "SOCIAL + ZONA FRIA"
+        }
+    ]
+}
