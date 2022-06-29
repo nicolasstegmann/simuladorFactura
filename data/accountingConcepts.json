@@ -1,0 +1,26 @@
+{
+    "accountingConcepts": [
+        {
+            "id": 1,
+            "type": "C",
+            "name": "VALOR GAS"
+        },
+        {
+            "id": 2,
+            "type": "T",
+            "name": "CARGO FIJO"
+        },
+        {
+            "id": 3,
+            "type": "I",
+            "name": "IVA",
+            "rate": 0.21
+        },
+        {
+            "id": 4,
+            "type": "I",
+            "name": "IIBB",
+            "rate": 0.03
+        }
+    ]
+}
