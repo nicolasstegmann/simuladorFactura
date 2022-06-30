@@ -30,13 +30,13 @@ const sleep = (seconds) => {
 
 const fetchDomainFiles = async () => {
     toggleLoader()
-    const jsonFiles = ['../data/subzones.json', '../data/categories.json', '../data/rateTypes.json', '../data/accountingConcepts.json', '../data/rates.json']
+    const jsonFiles = ['./data/subzones.json', './data/categories.json', './data/rateTypes.json', './data/accountingConcepts.json', './data/rates.json']
     const responses = jsonFiles.map(async (jsonFile) => {
         const res = await fetch(jsonFile)
         const data = await res.json()
         return data
     })
-    await sleep(3) //just to simulate api delay and loader. Will delete this line if deploying in production
+    await sleep(5) //just to simulate api delay and loader. Will delete this line if deploying in production
     toggleLoader()
     return Promise.all(responses)
     .catch(e => {
