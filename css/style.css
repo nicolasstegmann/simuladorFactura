@@ -57,6 +57,7 @@ a {
   background-color: #004571;
   color: white;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .navbar h1 {
