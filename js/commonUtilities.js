@@ -75,7 +75,7 @@ const firtTimeIntro = () => {
                     title:
                         `
                         <div>
-                        <img src="../img/gasnorLogo.png" alt="Gasnor S.A." style="width:150px;">
+                        <img src="./img/gasnorLogo.png" alt="Gasnor S.A." style="width:150px;">
                         <h2>Bienvenido al simulador de facturas</h2>
                         </div>
                         `,
