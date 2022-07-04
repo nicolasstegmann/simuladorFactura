@@ -1,0 +1,118 @@
+{
+    "artifactTemplateModels": [
+        {
+            "artifactName": "horno",
+            "askDays": true,
+            "askHours": true,
+            "askPilot": false,
+            "askPeople": false,
+            "artifactImg": "./img/horno.svg",
+            "artifactKcalValue": 0.32,
+            "artifactDefaultSettings": {
+                "peopleQty": 0
+            }
+        },
+        {
+            "artifactName": "hornalla",
+            "askDays": true,
+            "askHours": true,
+            "askPilot": false,
+            "askPeople": false,
+            "artifactImg": "./img/cocina.svg",
+            "artifactKcalValue": 0.15,
+            "artifactDefaultSettings": {
+                "peopleQty": 0
+            }
+        },
+        {
+            "artifactName": "estufa",
+            "askDays": true,
+            "askHours": true,
+            "askPilot": true,
+            "askPeople": false,
+            "artifactImg": "./img/calefactor.svg",
+            "artifactAvailableKcals": [
+                {
+                    "artifactAvailableKcalValue": 0.27,
+                    "artifactAvailableKcalDesc": "2500 kcal/h"
+                },
+                {
+                    "artifactAvailableKcalValue": 0.32,
+                    "artifactAvailableKcalDesc": "3000 kcal/h"
+                },
+                {
+                    "artifactAvailableKcalValue": 0.48,
+                    "artifactAvailableKcalDesc": "4500 kcal/h"
+                },
+                {
+                    "artifactAvailableKcalValue": 0.65,
+                    "artifactAvailableKcalDesc": "6000 kcal/h"
+                },
+                {
+                    "artifactAvailableKcalValue": 0.97,
+                    "artifactAvailableKcalDesc": "9000 kcal/h"
+                },
+                {
+                    "artifactAvailableKcalValue": 1,
+                    "artifactAvailableKcalDesc": "10000 kcal/h"
+                }
+            ],
+            "artifactDefaultSettings": {
+                "peopleQty": 0
+            }
+        },
+        {
+            "artifactName": "caldera",
+            "askDays": false,
+            "askHours": false,
+            "askPilot": true,
+            "askPeople": true,
+            "artifactImg": "./img/caldera.svg",
+            "artifactAvailableKcals": [
+                {
+                    "artifactAvailableKcalValue": 2.15,
+                    "artifactAvailableKcalDesc": "20000 kcal/h"
+                },
+                {
+                    "artifactAvailableKcalValue": 3.23,
+                    "artifactAvailableKcalDesc": "30000 kcal/h"
+                },
+                {
+                    "artifactAvailableKcalValue": 4.3,
+                    "artifactAvailableKcalDesc": "40000 kcal/h"
+                }
+            ],
+            "artifactDefaultSettings": {
+                "dayQty": 31,
+                "hourQty": 1
+            }            
+        },
+        {
+            "artifactName": "calefón",
+            "askDays": false,
+            "askHours": false,
+            "askPilot": true,
+            "askPeople": true,
+            "artifactImg": "./img/calefon.svg",
+            "artifactKcalValue": 1.13,
+            "artifactDefaultSettings": {
+                "dayQty": 0,
+                "hourQty": 0
+            }
+        },
+        {
+            "artifactName": "termotanque",
+            "askDays": false,
+            "askHours": false,
+            "askPilot": false,
+            "askPeople": true,
+            "artifactImg": "./img/termotanque.svg",
+            "artifactKcalValue": 0.35,
+            "artifactDefaultSettings": {
+                "dayQty": 31,
+                "hourQty": 1.189,
+                "hasPilot": true                
+            }
+        }
+    ]
+}

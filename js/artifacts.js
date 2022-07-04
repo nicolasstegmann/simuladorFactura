@@ -1,5 +1,5 @@
-let artifacts = []
 let artifactTemplates = []
+let artifacts = []
 
 const artifactToastNotification = (icon, message) => naturgyToast.fire({icon: icon, title: message})    
 
@@ -124,26 +124,7 @@ const addArtifact = (e) => {
         peopleQty = selection.options[selection.selectedIndex].value
     }
 
-    switch (artifactTemplate.artifactName) {
-        case 'horno':
-        case 'hornalla':
-        case 'estufa':
-            peopleQty = 0
-            break
-        case 'caldera':
-            dayQty = 31
-            hourQty = 1
-            break
-        case 'calefón':
-            dayQty = 0
-            hourQty = 0
-            break
-        case 'termotanque':
-            dayQty = 31
-            hourQty = 1.189
-            hasPilot = true
-            break
-    }
+    (artifactTemplate.artifactDefaultSettings) && ({peopleQty = peopleQty, dayQty = dayQty, hourQty = hourQty, hasPilot = hasPilot} = artifactTemplate.artifactDefaultSettings)
 
     let artifact = new Artifact(artifactTemplate.artifactName, artifactKcalValue, artifactKcalDesc, dayQty, hourQty, hasPilot, peopleQty)
 
@@ -171,29 +152,15 @@ const artifactDesigner = () => {
     let nodeToInsert
     let referenceNode
     let nodeToDelete
-    
-    artifactTemplate = new ArtifactTemplate('horno', true, true, false, false, './img/horno.svg', 0.32)
-    artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('hornalla', true, true, false, false, './img/cocina.svg', 0.15)
-    artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('estufa', true, true, true, false, './img/calefactor.svg')
-    artifactTemplate.addAvailableKcal(0.27, '2500 kcal/h')
-    artifactTemplate.addAvailableKcal(0.32, '3000 kcal/h')
-    artifactTemplate.addAvailableKcal(0.48, '4500 kcal/h')
-    artifactTemplate.addAvailableKcal(0.65, '6000 kcal/h')
-    artifactTemplate.addAvailableKcal(0.97, '9000 kcal/h')
-    artifactTemplate.addAvailableKcal(1, '10000 kcal/h')
-    artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('caldera', false, false, true, true, './img/caldera.svg')
-    artifactTemplate.addAvailableKcal(2.15, '20000 kcal/h')
-    artifactTemplate.addAvailableKcal(3.23, '30000 kcal/h')
-    artifactTemplate.addAvailableKcal(4.3, '40000 kcal/h')
-    artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('calefón', false, false, true, true, './img/calefon.svg', 1.13)
-    artifactTemplates.push(artifactTemplate)
-    artifactTemplate = new ArtifactTemplate('termotanque', false, false, false, true, './img/termotanque.svg', 0.35)
-    artifactTemplates.push(artifactTemplate)
 
+    artifactTemplateModels.forEach((artifactTemplateModel) => {
+        artifactTemplate = new ArtifactTemplate(artifactTemplateModel.artifactName, artifactTemplateModel.askDays, artifactTemplateModel.askHours, artifactTemplateModel.askPilot, artifactTemplateModel.askPeople, artifactTemplateModel.artifactImg, artifactTemplateModel?.artifactKcalValue, artifactTemplateModel?.artifactDefaultSettings)
+        artifactTemplateModel.artifactAvailableKcals && 
+            artifactTemplateModel.artifactAvailableKcals.forEach((artifactAvailableKcal) => {
+                artifactTemplate.addAvailableKcal(artifactAvailableKcal.artifactAvailableKcalValue, artifactAvailableKcal.artifactAvailableKcalDesc)
+            })
+        artifactTemplates.push(artifactTemplate)
+    })
     nodeToDelete = document.querySelector('#m3ConsumptionInput')
     isEmpty(nodeToDelete) || nodeToDelete.remove()
 
