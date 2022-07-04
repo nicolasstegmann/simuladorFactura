@@ -23,15 +23,17 @@ class ArtifactAvailableKcal {
 }
 
 class ArtifactTemplate {
-    constructor(artifactName, askDays, askHours, askPilot, askPeople, artifactImg, artifactAvailableKcalValue, artifactAvailableKcalDesc) {
+    constructor(artifactName, askDays, askHours, askPilot, askPeople, artifactImg, artifactAvailableKcalValue, artifactDefaultSettings) {
         this.artifactName = artifactName,
         this.artifactAvailableKcals = [],
         this.askDays = askDays,
         this.askHours = askHours,
         this.askPilot = askPilot,
         this.askPeople = askPeople,
-        this.artifactImg = artifactImg
-        isNaN(artifactAvailableKcalValue) || this.addAvailableKcal(artifactAvailableKcalValue, artifactAvailableKcalDesc)
+        this.artifactImg = artifactImg,
+        this.artifactDefaultSettings = {},
+        this.artifactDefaultSettings = artifactDefaultSettings,
+        isNaN(artifactAvailableKcalValue) || this.addAvailableKcal(artifactAvailableKcalValue)
     }
     artifactCapShownName = () => {
         return capitalizeFirstLetter(this.artifactName)

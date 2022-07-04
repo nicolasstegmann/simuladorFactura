@@ -30,7 +30,7 @@ const sleep = (seconds) => {
 
 const fetchDomainFiles = async () => {
     toggleLoader()
-    const jsonFiles = ['./data/subzones.json', './data/categories.json', './data/rateTypes.json', './data/accountingConcepts.json', './data/rates.json']
+    const jsonFiles = ['./data/subzones.json', './data/categories.json', './data/rateTypes.json', './data/accountingConcepts.json', './data/rates.json', './data/artifactTemplateModels.json']
     const responses = jsonFiles.map(async (jsonFile) => {
         const res = await fetch(jsonFile)
         const data = await res.json()
@@ -49,7 +49,7 @@ const fetchDomainFiles = async () => {
 }
 
 const initSimulator = async () => {
-    [{subzones}, {categories}, {rateTypes}, {accountingConcepts}, {rates}] = await fetchDomainFiles()
+    [{subzones}, {categories}, {rateTypes}, {accountingConcepts}, {rates}, {artifactTemplateModels}] = await fetchDomainFiles()
     renderizeSimulator()
 }
 
@@ -59,5 +59,6 @@ let categories = []
 let rateTypes = []
 let accountingConcepts = []
 let rates = []
+let artifactTemplateModels = []
 
 initSimulator()
